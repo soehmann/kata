@@ -1,0 +1,4 @@
+kata
+====
+
+Coding dojo's
