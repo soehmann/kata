@@ -13,12 +13,11 @@ import com.google.common.collect.Lists;
 public class PangramTest {
 
     private static final String INPUT = "abcdefghijklmnopqrstuvwxyz";
-    private static final Sentence SENTENCE = new Sentence(INPUT);
     private Pangram toTest;
 
     @Before
     public void setUp() throws Exception {
-        toTest = new Pangram(SENTENCE);
+        toTest = Pangram.check(INPUT);
     }
 
     @Test
@@ -33,7 +32,7 @@ public class PangramTest {
 
     @Test
     public void testGetMissedLetters() {
-        toTest = new Pangram(new Sentence(""));
+        toTest = Pangram.check("");
         assertEquals(toTest.getMissedLetters(), expected(INPUT));
     }
 

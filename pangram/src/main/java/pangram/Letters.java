@@ -10,11 +10,11 @@ public class Letters {
     private static final String DEFAULT = "abcdefghijklmnopqrstuvwxyz";
     private final ImmutableSet<String> portion;
 
-    private Letters(final ImmutableSet portion) {
+    private Letters(final ImmutableSet<String> portion) {
         this.portion = portion;
     }
 
-    public ImmutableSet getLetters() {
+    public ImmutableSet<String> getLetters() {
         return portion;
     }
 

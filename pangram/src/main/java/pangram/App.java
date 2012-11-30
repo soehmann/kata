@@ -11,7 +11,7 @@ public class App
     }
 
     private static Pangram check(final String input) {
-        return new Pangram(new Sentence(input));
+        return Pangram.check(input);
     }
 
     private static void output(final Pangram pangram) {

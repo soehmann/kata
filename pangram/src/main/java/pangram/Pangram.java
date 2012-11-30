@@ -10,7 +10,7 @@ public class Pangram {
 
     private final Sentence sentence;
 
-    public Pangram(final Sentence sentence) {
+    private Pangram(final Sentence sentence) {
         this.sentence = sentence;
     }
 
@@ -28,5 +28,9 @@ public class Pangram {
 
     private Letters getDifference() {
         return Letters.build().difference(Sets.newHashSet(this.sentence.getLetters()));
+    }
+
+    public static Pangram check(final String pangram) {
+        return new Pangram(new Sentence(pangram));
     }
 }
