@@ -7,17 +7,20 @@ import com.google.common.collect.Lists;
 
 /**
  * The Game. Contains the secret color code and guesses (rounds).
- * For kata do not change the methods and constructor. Your part is implements the logic and results on it. Equals,
- * hashCode and toString must be adapt after changes.
+ * For kata do not change the methods and constructor. Your part is implements the logic and results on it. Especially
+ * within create(...) and play(...).
+ * Equals, hashCode and toString must be adapt after changes.
  */
 public class Mastermind {
+
+    private List<Guess> rounds = Lists.newArrayList();
 
     private Mastermind() {
 
     }
 
     public List<Guess> getRounds() {
-        return Lists.newArrayList();
+        return rounds;
     }
 
     public List<ColorCode> getColorCodes() {
@@ -49,7 +52,7 @@ public class Mastermind {
 
         if(obj instanceof Mastermind) {
             final Mastermind that = (Mastermind)obj;
-            return Objects.equal(this, that);
+            return Objects.equal(this.rounds, that.rounds);
         }
 
         return false;
@@ -57,6 +60,6 @@ public class Mastermind {
 
     @Override
     public String toString() {
-        return Objects.toStringHelper(this).toString();
+        return Objects.toStringHelper(this).add("rounds", rounds).toString();
     }
 }
