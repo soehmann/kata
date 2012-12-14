@@ -14,7 +14,8 @@ import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableMap;
 
 import de.soe.kata.mastermind.model.Code;
-import de.soe.kata.mastermind.model.Mastermind;
+import de.soe.kata.mastermind.model.Game;
+import de.soe.kata.mastermind.services.GameFactory;
 import de.soe.kata.mastermind.services.GameRepository;
 
 @Controller
@@ -23,10 +24,12 @@ public class MastermindController {
 
     private static final String key = "MASTERMIND";
     private final GameRepository gameRepository;
+    private final GameFactory factory;
 
     @Autowired
-    public MastermindController(final GameRepository gameRepository) {
+    public MastermindController(final GameRepository gameRepository, final GameFactory factory) {
         this.gameRepository = gameRepository;
+        this.factory = factory;
     }
 
     @RequestMapping(method= GET)
@@ -36,13 +39,13 @@ public class MastermindController {
 
     @RequestMapping(value = "/game", method = GET)
     public ModelAndView show(){
-        final Optional<Mastermind> optional = this.gameRepository.find(key);
+        final Optional<Game> optional = this.gameRepository.find(key);
         if(optional.isPresent()) {
-            final Mastermind mastermind = optional.get();
-            if(mastermind.isSolved()) {
+            final Game game = optional.get();
+            if(game.isSolved()) {
                 this.gameRepository.cleanGameCache();
             }
-            return new ModelAndView("mastermind.game", ImmutableMap.<String, Object>of("mastermind", mastermind));
+            return new ModelAndView("mastermind.game", ImmutableMap.<String, Object>of("mastermind", game));
         }
 
         return new ModelAndView("mastermind.game", ImmutableMap.<String, Object>of("mastermind", null));
@@ -61,12 +64,13 @@ public class MastermindController {
     }
 
     private void playGame(final Code code) {
-        final Mastermind mastermind;
-        final Optional<Mastermind> optional = this.gameRepository.find(key);
+        final Game mastermind;
+        final Optional<Game> optional = this.gameRepository.find(key);
         if(!optional.isPresent()) {
             //Initialize
-            mastermind = Mastermind.create(code);
+            mastermind = factory.create(code);
         } else {
+            //Play
             mastermind = optional.get();
             mastermind.play(code);
         }

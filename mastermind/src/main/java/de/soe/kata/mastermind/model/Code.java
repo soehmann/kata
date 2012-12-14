@@ -3,7 +3,7 @@ package de.soe.kata.mastermind.model;
 import com.google.common.base.Objects;
 
 /**
- * Plain stupid input object from web interface.
+ * Plain stupid input object (bean) from web interface.
  */
 public class Code {
 
