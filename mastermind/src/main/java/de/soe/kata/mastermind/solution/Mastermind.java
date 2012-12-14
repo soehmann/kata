@@ -2,9 +2,11 @@ package de.soe.kata.mastermind.solution;
 
 import static com.google.common.base.Objects.equal;
 import static com.google.common.base.Objects.toStringHelper;
+import static com.google.common.collect.FluentIterable.from;
 
 import java.util.List;
 
+import com.google.common.base.Function;
 import com.google.common.base.Objects;
 import com.google.common.collect.Lists;
 
@@ -16,9 +18,9 @@ import de.soe.kata.mastermind.model.Guess;
 public class Mastermind implements Game {
 
     private List<Guess> rounds = Lists.newArrayList();
-    private final List<ColorCode> mastermindCodes;
+    private final List<MastermindColor> mastermindCodes;
 
-    public Mastermind(final List<ColorCode> codes) {
+    public Mastermind(final List<MastermindColor> codes) {
         this.mastermindCodes = codes;
     }
 
@@ -27,7 +29,12 @@ public class Mastermind implements Game {
     }
 
     public List<ColorCode> getColorCodes() {
-        return mastermindCodes;
+        return from(mastermindCodes).transform(new Function<MastermindColor, ColorCode>() {
+            @Override
+            public ColorCode apply(final MastermindColor mastermindColor) {
+                return mastermindColor.toColorCode();
+            }
+        }).toImmutableList();
     }
 
     public void play(final Code code) {
