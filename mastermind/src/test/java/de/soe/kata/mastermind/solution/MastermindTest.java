@@ -1,11 +1,14 @@
-package de.soe.kata.mastermind.model;
+package de.soe.kata.mastermind.solution;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import com.google.common.collect.Lists;
+
+import de.soe.kata.mastermind.model.ColorCode;
 
 public class MastermindTest {
 
@@ -13,7 +16,7 @@ public class MastermindTest {
 
     @Before
     public void setUp() {
-        mastermind = Mastermind.create(new Code());
+        mastermind = new Mastermind(Lists.<ColorCode>newArrayList());
     }
 
     @Test
@@ -28,16 +31,11 @@ public class MastermindTest {
 
     @Test
     public void testPlay() throws Exception {
-        //Must be implements
+        //Play mastermind must be implements.
     }
 
     @Test
     public void testIsSolved() throws Exception {
         assertThat(mastermind.isSolved(), is(false));
-    }
-
-    @Test
-    public void testCreate() throws Exception {
-        assertThat(Mastermind.create(new Code()), is(notNullValue()));
     }
 }
