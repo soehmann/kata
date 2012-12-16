@@ -6,6 +6,8 @@ import static com.google.common.collect.FluentIterable.from;
 import java.util.List;
 import java.util.Set;
 
+import javax.annotation.Nullable;
+
 import com.google.common.base.Function;
 import com.google.common.base.Objects;
 import com.google.common.collect.ImmutableSet;
@@ -13,6 +15,9 @@ import com.google.common.collect.ImmutableSet;
 import de.soe.kata.mastermind.model.Code;
 import de.soe.kata.mastermind.model.ColorCode;
 
+/**
+ * Determine and contains the set of valid codes of mastermind game colors.
+ */
 public class MastermindColor {
 
     public static final Set<MastermindColor> COLORS = ImmutableSet.of(new MastermindColor("R"),
@@ -37,10 +42,10 @@ public class MastermindColor {
         return COLORS.contains(this);
     }
 
-    public static List<MastermindColor> transformFrom(final Code code) {
+    public static List<MastermindColor> transform(final Code code) {
         return from(fixedLength(1).split(code.getCode())).transform(new Function<String, MastermindColor>() {
             @Override
-            public MastermindColor apply(final String color) {
+            public MastermindColor apply(@Nullable final String color) {
                 return new MastermindColor(color.toUpperCase());
             }
         }).toImmutableList();

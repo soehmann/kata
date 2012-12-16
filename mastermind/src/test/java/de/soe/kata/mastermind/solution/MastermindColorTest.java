@@ -32,7 +32,7 @@ public class MastermindColorTest {
 
     @Test
     public void test_transform_from_invalid_code_to_mastermindColor() {
-        final List<MastermindColor> actual = MastermindColor.transformFrom(code("CDEF"));
+        final List<MastermindColor> actual = MastermindColor.transform(code("CDEF"));
         assertThat(actual.size(), is(4) );
         for (MastermindColor mastermindColor : actual) {
             assertThat(mastermindColor.isValid(), is(false));
@@ -42,7 +42,7 @@ public class MastermindColorTest {
 
     @Test
     public void test_transform_from_valid_code_to_mastermindColor() {
-        final List<MastermindColor> actual = MastermindColor.transformFrom(code("RBGY"));
+        final List<MastermindColor> actual = MastermindColor.transform(code("RBGY"));
         assertThat(actual.size(), is(4) );
         for (MastermindColor mastermindColor : actual) {
             assertThat(mastermindColor.isValid(), is(true));
@@ -52,7 +52,7 @@ public class MastermindColorTest {
 
     @Test
     public void test_transform_from_mixed_code_to_mastermindColor() {
-        final List<MastermindColor> actual = MastermindColor.transformFrom(code("RVWB"));
+        final List<MastermindColor> actual = MastermindColor.transform(code("RVWB"));
         assertThat(actual.size(), is(4) );
         for (MastermindColor mastermindColor : actual) {
             assertThat(mastermindColor.getMastermindColor(), isIn(Sets.newHashSet("R","V","W","B")));
@@ -76,6 +76,6 @@ public class MastermindColorTest {
     }
 
     private MastermindColor toTest(final String color) {
-        return MastermindColor.transformFrom(code(color)).get(0);
+        return MastermindColor.transform(code(color)).get(0);
     }
 }
