@@ -5,7 +5,7 @@
 <%@ page pageEncoding="UTF-8" %>
 <html>
 <head>
-    <title>Mastermind play</title>
+    <title>TicTacToe play</title>
 </head>
 <body>
     <strong>Insert your color codes</strong>
