@@ -8,7 +8,7 @@
     <title>TicTacToe play</title>
 </head>
 <body>
-    <strong>Insert your color codes</strong>
+    <strong>Spiel das Spiel der Spiele</strong>
     <f:form method="post" action="/tictactoe/play" commandName="tictactoe">
         <c:forEach items="${tictactoe.fields}" varStatus="counter">
             <f:input path="fields[${counter.index}].content" size="1" maxlength="1" style="text-align: center;" />
