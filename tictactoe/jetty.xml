@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://jetty.mortbay.org/configure.dtd">
+<Configure id="Server" class="org.mortbay.jetty.Server">
+
+	<!--
+    <New class="org.mortbay.jetty.plus.naming.Resource">
+        <Arg>jdbc/DataSource</Arg>
+        <Arg>
+            <New class="org.apache.commons.dbcp.BasicDataSource">
+                <Set name="driverClassName">com.mysql.jdbc.Driver</Set>
+                <Set name="url">jdbc:mysql://localhost:3306/xxx?autoReconnect=true</Set>
+                <Set name="username">xxx</Set>
+                <Set name="password">xxx</Set>
+            </New>
+        </Arg>
+    </New>
+	
+    <New class="org.mortbay.jetty.plus.naming.EnvEntry">
+        <Arg>hibernate/Dialect</Arg>
+        <Arg type="java.lang.String">org.hibernate.dialect.MySQL5InnoDBDialect</Arg>
+    </New>
+
+    <New class="org.mortbay.jetty.plus.naming.EnvEntry">
+        <Arg>hibernate/Debug</Arg>
+        <Arg type="java.lang.String">false</Arg>
+    </New>
+
+    <New class="org.mortbay.jetty.plus.naming.EnvEntry">
+        <Arg>hibernate/Show_sql</Arg>
+        <Arg type="java.lang.String">false</Arg>
+    </New>
+
+    <New class="org.mortbay.jetty.plus.naming.EnvEntry">
+        <Arg>hibernate/Format_sql</Arg>
+        <Arg type="java.lang.String">false</Arg>
+    </New>
+
+    <New class="org.mortbay.jetty.plus.naming.EnvEntry">
+        <Arg>hibernate/Hbm2ddl.auto</Arg>
+        <Arg type="java.lang.String">false</Arg>
+    </New>
+
+    <New class="org.mortbay.jetty.plus.naming.EnvEntry">
+        <Arg>hibernate/Jdbc.batch_size</Arg>
+        <Arg type="java.lang.String">50</Arg>
+    </New>
+
+    <New class="org.mortbay.jetty.plus.naming.EnvEntry">
+        <Arg>hibernate/Validator.autoregister_listeners</Arg>
+        <Arg type="java.lang.String">create</Arg>
+    </New>
+
+    <New class="org.mortbay.jetty.plus.naming.EnvEntry">
+        <Arg>hibernate/Connection.charSet</Arg>
+        <Arg type="java.lang.String">UTF-8</Arg>
+    </New>
+
+    <New class="org.mortbay.jetty.plus.naming.EnvEntry">
+        <Arg>hibernate/Connection.characterEncoding</Arg>
+        <Arg type="java.lang.String">UTF-8</Arg>
+    </New>
+
+    <New class="org.mortbay.jetty.plus.naming.EnvEntry">
+        <Arg>hibernate/Connection.autocommit</Arg>
+        <Arg type="java.lang.String">false</Arg>
+    </New>
+	-->
+	
+    <!--<Get name="securityHandler">-->
+        <!--<Set name="userRealm">-->
+            <!--<New class="org.mortbay.jetty.security.HashUserRealm">-->
+                <!--<Set name="name">Test Realm</Set>-->
+                <!--<Set name="config"><SystemProperty name="local.jetty.conf" default="."/>/realm.properties-->
+                <!--</Set>-->
+            <!--</New>-->
+        <!--</Set>-->
+    <!--</Get>-->
+	<!--
+	<Set name="handler">
+      <New id="Handlers" class="org.mortbay.jetty.handler.HandlerCollection">
+        <Set name="handlers">
+         <Array type="org.mortbay.jetty.Handler">
+           <Item>
+             <New id="Contexts" class="org.mortbay.jetty.handler.ContextHandlerCollection"/>
+           </Item>
+           <Item>
+             <New id="DefaultHandler" class="org.mortbay.jetty.handler.DefaultHandler"/>
+           </Item>
+           <Item>
+             <New id="RequestLog" class="org.mortbay.jetty.handler.RequestLogHandler"/>
+           </Item>
+         </Array>
+        </Set>
+      </New>
+    </Set>
+	-->
+	<!--
+    <Ref id="RequestLog">
+      <Set name="requestLog">
+        <New id="RequestLogImpl" class="org.mortbay.jetty.NCSARequestLog">
+          <Arg><SystemProperty name="jetty.logs" default="."/>/jetty-access.log</Arg>
+          <Set name="retainDays">90</Set>
+          <Set name="append">true</Set>
+          <Set name="extended">false</Set>
+          <Set name="LogTimeZone">GMT</Set>
+        </New>
+      </Set>
+    </Ref>
+    -->
+</Configure>
+
